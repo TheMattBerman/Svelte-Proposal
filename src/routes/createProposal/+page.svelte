@@ -2,7 +2,7 @@
 <script>
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import RichTextEditor from '../components/RichTextEditor.svelte';
+  import RichTextEditor from '/src/components/RichTextEditor.svelte';
 
   let templateId;
   let title = '';
