@@ -25,6 +25,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tinymce/tinymce-svelte": "^1.0.1",
 		"pocketbase": "^0.14.4",
 		"svelte-routing": "^1.8.9"
 	}
