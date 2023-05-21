@@ -5,13 +5,13 @@
 
 <section>
   <h1>Login Here</h1>
-  <form on:submit|preventDefault={handleSubmit} class="form-center">
+  <form on:submit|preventDefault={handleSubmit} class="form-center form-control">
     <label>
-      Email: <input type="email" bind:value={email} />
+      Email: <input placeholder="awesome@becool.com" class="input input-bordered input-primary w-full max-w-xs" type="email" bind:value={email} />
     </label>
     <br />
     <label>
-      Password: <input type="password" bind:value={password} />
+      Password: <input placeholder="password" class="input input-bordered input-primary w-full max-w-xs" type="password" bind:value={password} />
     </label>
     <br />
     <button type="submit">Submit</button>
