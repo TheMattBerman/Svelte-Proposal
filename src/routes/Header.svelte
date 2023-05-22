@@ -10,10 +10,22 @@
     isDropdownOpen = !isDropdownOpen // togle state on click
   }
 
+  let isDropdown2Open = false // default state (dropdown close)
+
+  const handleDropdown2Click = () => {
+    isDropdown2Open = !isDropdown2Open // togle state on click
+  }
+
   const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
     // use "focusout" event to ensure that we can close the dropdown when clicking outside or when we leave the dropdown with the "Tab" button
     if (relatedTarget instanceof HTMLElement && currentTarget.contains(relatedTarget)) return // check if the new focus target doesn't present in the dropdown tree (exclude ul\li padding area because relatedTarget, in this case, will be null) 
     isDropdownOpen = false
+  }
+
+    const handleDropdown2FocusLoss = ({ relatedTarget, currentTarget }) => {
+    // use "focusout" event to ensure that we can close the dropdown when clicking outside or when we leave the dropdown with the "Tab" button
+    if (relatedTarget instanceof HTMLElement && currentTarget.contains(relatedTarget)) return // check if the new focus target doesn't present in the dropdown tree (exclude ul\li padding area because relatedTarget, in this case, will be null) 
+    isDropdown2Open = false
   }
 </script>
 
@@ -66,7 +78,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </button>
         {#if isDropdownOpen}
-    <ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-base-200 text-white" style="display:{isDropdownOpen ? 'block' : 'none'}; ">
+    <ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-base-200 text-white" style="display:{isDropdownOpen ? 'block' : 'none'}; opacity:{isDropdownOpen ? '1' : '0'}; visibility:{isDropdownOpen ? 'visible' : 'hidden'}; ">
       	<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
@@ -94,10 +106,25 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
     </button>
     <button class="btn btn-ghost btn-circle">
-      <div class="indicator">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-        <span class="badge badge-xs badge-primary indicator-item"></span>
-      </div>
+      <div class="dropdown dropdown-end" on:focusout={handleDropdown2FocusLoss}>
+      <button class="btn btn-ghost btn-circle avatar" on:click={handleDropdown2Click}>
+        <div class="w-10 rounded-full">
+          <img src="https://dummyimage.com/100x100/000/fff" />
+        </div>
+      </button>
+        {#if isDropdown2Open}
+      <ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52" style="display:{isDropdown2Open ? 'block' : 'none'}; opacity:{isDropdown2Open ? '1' : '0'}; visibility:{isDropdown2Open ? 'visible' : 'hidden'};">
+        <li>
+          <a class="justify-between">
+            Profile
+            <span class="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+        {/if}   
+    </div>
     </button>
   </div>
 </div>

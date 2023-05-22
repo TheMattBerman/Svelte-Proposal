@@ -6,16 +6,24 @@
 <section>
   <h1>Login Here</h1>
   <form on:submit|preventDefault={handleSubmit} class="form-center form-control">
-    <label>
-      Email: <input placeholder="awesome@becool.com" class="input input-bordered input-primary w-full max-w-xs" type="email" bind:value={email} />
-    </label>
     <br />
-    <label>
-      Password: <input placeholder="password" class="input input-bordered input-primary w-full max-w-xs" type="password" bind:value={password} />
-    </label>
+  <label class="input-group w-full">
+    <span class="text-white w-1/3">Email</span>
+    <input type="text" placeholder="info@site.com" class="input input-bordered w-2/3" bind:value={email}/>
+  </label>
     <br />
-    <button type="submit">Submit</button>
+<label class="input-group w-full">
+    <span class="text-white w-1/3">Password</span>
+    <input type="text" placeholder="Password" class="input input-bordered w-2/3" bind:value={password}/>
+  </label>
+    
+    <br />
+    <button class="btn btn-secondary" type="submit">Submit</button>
   </form>
+
+  <div class="text-center">
+  </div>
+    
 </section>
 
 

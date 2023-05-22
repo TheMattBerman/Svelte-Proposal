@@ -2,6 +2,7 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+  import { page } from '$app/stores';
 </script>
 
 <svelte:head>
@@ -21,6 +22,24 @@
 
 		to your new<br />SvelteKit app
 	</h1>
+
+  <ul class="text-primary">
+      	<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+				<a href="/">Home</a>
+			</li>
+      <li aria-current={$page.url.pathname === '/auth' ? 'page' : undefined}>
+				<a href="/auth">Login</a>
+			</li>
+      <li aria-current={$page.url.pathname === '/proposals' ? 'page' : undefined}>
+				<a href="/proposals">Proposals</a>
+			</li>
+            <li aria-current={$page.url.pathname === '/template' ? 'page' : undefined}>
+				<a href="/template">Template</a>
+			</li>
+            <li aria-current={$page.url.pathname === '/createProposal' ? 'page' : undefined}>
+				<a href="/createProposal">Create</a>
+			</li>
+    </ul>
 
 	<h2>
 		try editing <strong>src/routes/+page.svelte</strong>
