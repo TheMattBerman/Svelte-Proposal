@@ -1,22 +1,23 @@
 <script>
 	import { page } from '$app/stores';
+ // import { page as $page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
 
-let isDropdownOpen = false;
-  let notificationCount = 0;
+    let isDropdownOpen = false // default state (dropdown close)
 
-  function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen;
+  const handleDropdownClick = () => {
+    isDropdownOpen = !isDropdownOpen // togle state on click
   }
 
-  function incrementNotification() {
-    notificationCount++;
+  const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
+    // use "focusout" event to ensure that we can close the dropdown when clicking outside or when we leave the dropdown with the "Tab" button
+    if (relatedTarget instanceof HTMLElement && currentTarget.contains(relatedTarget)) return // check if the new focus target doesn't present in the dropdown tree (exclude ul\li padding area because relatedTarget, in this case, will be null) 
+    isDropdownOpen = false
   }
-  
 </script>
 
-<header>
+<!-- <header>
 	<div class="corner">
 		<a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
@@ -31,9 +32,6 @@ let isDropdownOpen = false;
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<!-- <li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li> -->
       <li aria-current={$page.url.pathname === '/auth' ? 'page' : undefined}>
 				<a href="/auth">Login</a>
 			</li>
@@ -57,16 +55,25 @@ let isDropdownOpen = false;
 			<img src={github} alt="GitHub" />
 		</a>
 	</div>
-</header>
+</header> -->
 
-<div class="navbar bg-base-100">
+<header>
+<nav>
+<div class="navbar bg-base-100 bg-primary text-white">
   <div class="navbar-start">
-    <div class="dropdown">
-      <label class="btn btn-ghost btn-circle">
+    <div class="dropdown" on:focusout={handleDropdownFocusLoss}>
+      <button class="btn btn-ghost btn-circle " on:click={handleDropdownClick}>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-      </label>
-      <ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-         <li aria-current={$page.url.pathname === '/proposals' ? 'page' : undefined}>
+      </button>
+        {#if isDropdownOpen}
+    <ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-base-200 text-white" style="display:{isDropdownOpen ? 'block' : 'none'}; ">
+      	<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+				<a href="/">Home</a>
+			</li>
+      <li aria-current={$page.url.pathname === '/auth' ? 'page' : undefined}>
+				<a href="/auth">Login</a>
+			</li>
+      <li aria-current={$page.url.pathname === '/proposals' ? 'page' : undefined}>
 				<a href="/proposals">Proposals</a>
 			</li>
             <li aria-current={$page.url.pathname === '/template' ? 'page' : undefined}>
@@ -75,11 +82,12 @@ let isDropdownOpen = false;
             <li aria-current={$page.url.pathname === '/createProposal' ? 'page' : undefined}>
 				<a href="/createProposal">Create</a>
 			</li>
-      </ul>
+    </ul>
+  {/if}
     </div>
   </div>
   <div class="navbar-center">
-    <a href="/" class="btn btn-ghost normal-case text-xl">ProposalAI</a>
+    <a class="btn btn-ghost normal-case text-xl">ProposalAI</a>
   </div>
   <div class="navbar-end">
     <button class="btn btn-ghost btn-circle">
@@ -93,9 +101,11 @@ let isDropdownOpen = false;
     </button>
   </div>
 </div>
+  </nav>
+</header>
 
 <style>
-	header {
+	/* header {
 		display: flex;
 		justify-content: space-between;
 	}
@@ -181,5 +191,5 @@ let isDropdownOpen = false;
 
 	a:hover {
 		color: var(--color-theme-1);
-	}
+	} */
 </style>
