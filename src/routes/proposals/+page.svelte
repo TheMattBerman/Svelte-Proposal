@@ -60,7 +60,7 @@
       <h2 class="font-bold text-lg mb-2">{proposal.title}</h2>
       <p class="text-gray-700 text-base mb-2">Client: {proposal.client}</p>
       <p class="text-gray-700 text-base mb-4">Status: {proposal.status}</p>
-      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      <button class="bg-secondary hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded"
               on:click={() => viewProposal(proposal.id)}>View Proposal</button>
     </li>
   {/each}

@@ -1,0 +1,21 @@
+[debug] [2023-05-23T04:47:16.731Z] ----------------------------------------------------------------------
+[debug] [2023-05-23T04:47:16.733Z] Command:       /nix/store/dj805sw07vvpbxx39c8g67x8qddg0ikw-nodejs-18.12.1/bin/node /home/runner/Svelte-Proposal/.config/npm/node_global/bin/firebase init
+[debug] [2023-05-23T04:47:16.734Z] CLI Version:   12.1.0
+[debug] [2023-05-23T04:47:16.734Z] Platform:      linux
+[debug] [2023-05-23T04:47:16.735Z] Node Version:  v18.12.1
+[debug] [2023-05-23T04:47:16.735Z] Time:          Tue May 23 2023 04:47:16 GMT+0000 (Coordinated Universal Time)
+[debug] [2023-05-23T04:47:16.735Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-23T04:47:16.741Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-23T04:47:16.742Z] > authorizing via signed-in user (matthew@emerald.digital)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/runner/Svelte-Proposal
+
