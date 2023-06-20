@@ -5,6 +5,7 @@
 
 <section>
   <h1>Login Here</h1>
+  <div class="w-3/4 mx-auto">
   <form on:submit|preventDefault={handleSubmit} class="form-center form-control">
     <br />
   <label class="input-group w-full">
@@ -18,9 +19,9 @@
   </label>
     
     <br />
-    <button class="btn btn-secondary" type="submit">Submit</button>
+    <button class="btn btn-secondary w-1/3" type="submit">Submit</button>
   </form>
-
+  </div>
   <div class="text-center">
   </div>
     

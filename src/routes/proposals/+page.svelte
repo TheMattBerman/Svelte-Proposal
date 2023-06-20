@@ -1,12 +1,25 @@
 <script>  
+
+  import { onMount } from 'svelte';
+  import { db } from '../firebase';
+  let proposals = [];
+
+
+  onMount(async () => {
+    const snapshot = await db.collection('proposals').get();
+    proposals = snapshot.docs.map(doc => doc.data());
+  });
+  
   import { goto } from '$app/navigation';
-  let proposals = [
-    {id: 1, title: 'Proposal 1', client: 'Client 1', status: 'Pending'},
-    {id: 2, title: 'Proposal 2', client: 'Client 2', status: 'Approved'},
-    {id: 3, title: 'Proposal 3', client: 'Client 1', status: 'Pending'},
-    {id: 4, title: 'Proposal 4', client: 'Client 2', status: 'Approved'},
-    // Add more dummy proposals as needed
-  ];
+  
+// let proposals = [
+//   {id: 1, title: 'Proposal 1', client: 'Client 1', status: 'Pending'},
+//   {id: 2, title: 'Proposal 2', client: 'Client 2', status: 'Approved'},
+//   {id: 3, title: 'Proposal 3', client: 'Client 1', status: 'Pending'},
+//   {id: 4, title: 'Proposal 4', client: 'Client 2', status: 'Approved'},
+//   // Add more dummy proposals as needed
+// ];
+
 
   let filterKey = '';
   let filteredProposals = [...proposals]; // Initialize filteredProposals to be the same as proposals

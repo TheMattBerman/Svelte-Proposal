@@ -1,30 +1,41 @@
 <script>
-//  import { db } from '../../firebase';
-  import { createForm } from 'svelte-forms-lib';
-//  import { navigate } from '$app/navigation';
+  //  import { db } from '../../firebase';
+  import { createForm } from "svelte-forms-lib";
+  //  import { navigate } from '$app/navigation';
 
-  const industries = ['Software', 'Healthcare', 'Finance', 'Education', 'Other'];
-  const services = ['Web Development', 'Digital Marketing', 'SEO', 'Branding', 'Graphic Design'];
+  const industries = [
+    "Software",
+    "Healthcare",
+    "Finance",
+    "Education",
+    "Other",
+  ];
+  const services = [
+    "Web Development",
+    "Digital Marketing",
+    "SEO",
+    "Branding",
+    "Graphic Design",
+  ];
 
   const form = createForm({
     initialValues: {
-      name: '',
-      email: '',
-      company: '',
-      industry: '',
-      socialMedia: '',
+      name: "",
+      email: "",
+      company: "",
+      industry: "",
+      socialMedia: "",
       requestedServices: [],
     },
-    onSubmit: values => {
-     addClient(values);
-   },
+    onSubmit: (values) => {
+      addClient(values);
+    },
   });
 
-  async function addClient(client) {
-   await db.collection('clients').add(client);
-   navigate('/clients');
-  }
-  
+//  async function addClient(client) {
+//    await db.collection("clients").add(client);
+//    navigate("/clients");
+//  }
 </script>
 
 <h1>Create Client</h1>
@@ -64,7 +75,12 @@
     Requested Services:
     {#each services as service (service)}
       <div>
-        <input id={service} type="checkbox" bind:group={form.values.requestedServices} value={service} />
+        <input
+          id={service}
+          type="checkbox"
+          bind:group={form.values.requestedServices}
+          value={service}
+        />
         <label for={service}>{service}</label>
       </div>
     {/each}

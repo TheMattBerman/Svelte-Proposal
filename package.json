@@ -29,6 +29,7 @@
 		"@tinymce/tinymce-svelte": "^1.0.1",
 		"daisyui": "^2.51.6",
 		"firebase": "^9.22.0",
+		"rxfire": "^6.0.3",
 		"svelte-forms-lib": "^2.0.1"
 	}
 }
