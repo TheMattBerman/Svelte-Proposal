@@ -1,9 +1,8 @@
 import firebase from 'firebase/app';
+import 'firebase/firestore';
 import 'firebase/auth';
 import { getAnalytics } from "firebase/analytics";
-import 'firebase/firestore';
 var firebaseConfig = {
-    // ...your firebase credentials
   apiKey: "AIzaSyCpLno4ZCwkJX11TBITF6AR-iTo9Xvp5M0",
   authDomain: "proposalai.firebaseapp.com",
   projectId: "proposalai",

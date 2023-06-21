@@ -15,6 +15,6 @@
 
 <div>
 <Editor
-    apiKey="VITE_tiny_api"
+    apiKey="563ng2fby6ysq4mg4oe41lb1dc7io4ay9ntsgj2ffib086oh"
   />
 </div>

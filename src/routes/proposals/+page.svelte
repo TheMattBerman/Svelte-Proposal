@@ -1,7 +1,8 @@
 <script>  
 
   import { onMount } from 'svelte';
-  import { db } from '../firebase';
+  import { db } from '$lib/firebase.js';
+  //import { auth } from '$lib/firebase.js';
   let proposals = [];
 
 

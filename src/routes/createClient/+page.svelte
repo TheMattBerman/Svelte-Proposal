@@ -1,41 +1,41 @@
 <script>
-  //  import { db } from '../../firebase';
-  import { createForm } from "svelte-forms-lib";
-  //  import { navigate } from '$app/navigation';
+import { db } from '$lib/firebase';
+import { createForm } from "svelte-forms-lib";
+import { navigate } from '$app/navigation';
 
-  const industries = [
-    "Software",
-    "Healthcare",
-    "Finance",
-    "Education",
-    "Other",
-  ];
-  const services = [
-    "Web Development",
-    "Digital Marketing",
-    "SEO",
-    "Branding",
-    "Graphic Design",
-  ];
+const industries = [
+  "Software",
+  "Healthcare",
+  "Finance",
+  "Education",
+  "Other",
+];
+const services = [
+  "Web Development",
+  "Digital Marketing",
+  "SEO",
+  "Branding",
+  "Graphic Design",
+];
 
-  const form = createForm({
-    initialValues: {
-      name: "",
-      email: "",
-      company: "",
-      industry: "",
-      socialMedia: "",
-      requestedServices: [],
-    },
-    onSubmit: (values) => {
-      addClient(values);
-    },
-  });
+const form = createForm({
+  initialValues: {
+    name: "",
+    email: "",
+    company: "",
+    industry: "",
+    socialMedia: "",
+    requestedServices: [],
+  },
+  onSubmit: (values) => {
+    addClient(values);
+  },
+});
 
-//  async function addClient(client) {
-//    await db.collection("clients").add(client);
-//    navigate("/clients");
-//  }
+async function addClient(client) {
+  await db.collection("clients").push(client);
+  //navigate("/clients");
+}
 </script>
 
 <h1>Create Client</h1>
@@ -67,7 +67,7 @@
   </label>
 
   <label>
-    Company:
+    Social Media:
     <input type="text" bind:value={form.values.socialMedia} />
   </label>
 
@@ -79,6 +79,7 @@
           id={service}
           type="checkbox"
           bind:group={form.values.requestedServices}
+          key={service}
           value={service}
         />
         <label for={service}>{service}</label>
