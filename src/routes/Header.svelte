@@ -6,13 +6,13 @@
     let isDropdownOpen = false // default state (dropdown close)
 
   const handleDropdownClick = () => {
-    isDropdownOpen = !isDropdownOpen // togle state on click
+    isDropdownOpen = !isDropdownOpen // toggle state on click
   }
 
   let isDropdown2Open = false // default state (dropdown close)
 
   const handleDropdown2Click = () => {
-    isDropdown2Open = !isDropdown2Open // togle state on click
+    isDropdown2Open = !isDropdown2Open // toggle state on click
   }
 
   const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {

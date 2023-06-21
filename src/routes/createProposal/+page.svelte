@@ -1,11 +1,12 @@
 <!-- src/routes/createProposal.svelte -->
 <script>
-  import { goto } from '$app/navigation';
-  import { db } from '$lib/firebase.js';
-  import { onMount } from 'svelte';
-  import RichTextEditor from '/src/components/RichTextEditor.svelte';
 
-  let templateId;
+  import { goto } from '$app/navigation';
+  //import { db } from '$lib/firebase.js';  
+  import { onMount } from 'svelte';
+  import RichTextEditor from '../../components/RichTextEditor.svelte';
+
+  //let templateId;
   let title = '';
   let content = '';
 
