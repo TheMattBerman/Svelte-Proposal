@@ -1,7 +1,6 @@
 <script>
 import { db } from '$lib/firebase';
 import { createForm } from "svelte-forms-lib";
-import { navigate } from '$app/navigation';
 
 const industries = [
   "Software",
@@ -32,7 +31,7 @@ const form = createForm({
   },
 });
 
-async function addClient(client) {
+async function addClient(client: Record<string, any>) {
   await db.collection("clients").push(client);
   //navigate("/clients");
 }
